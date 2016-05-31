@@ -1,0 +1,8 @@
+<Context>
+    <Resource name="jdbc/student_tracker" auth="Container" type="javax.sql.DataSource"
+              maxActive="20" maxIdle="5" maxWait="10000"
+              username="kp" password="powell11"
+              driverClassName="org.mariadb.jdbc.Driver"
+              url="jdbc:mariadb://localhost:3306/student_tracker">
+    </Resource>
+</Context>

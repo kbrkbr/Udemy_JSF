@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xml:lang="en" lang="en">
+
+<f:metadata>
+    <f:event type="preRenderView" listener="#{studentController.loadStudents}"></f:event>
+</f:metadata>
+
+<h:head>
+    <meta name="Viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8"></meta>
+
+    <title>Student Tracker App</title>
+
+    <h:outputStylesheet library="css" name="style.css"/>
+
+</h:head>
+
+<h:body>
+
+    <div id="wrapper">
+        <div id="header">
+            <h2>Foobar University</h2>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="content">
+            <h:messages globalOnly="true"/>
+
+            <h:button value="Add Student" styleClass="add-student-button" outcome="add-student-form"/>
+
+            <h:form>
+                <h:dataTable value="#{studentController.students}" var="s" styleClass="demo-table"
+                             headerClass="demo-table-header" rowClasses="demo-table-odd-row, demo-table-even-row">
+
+                    <h:column>
+                        <f:facet name="header">Last Name</f:facet>
+                        #{s.lastName}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">First Name</f:facet>
+                        #{s.firstName}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        #{s.email}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Action</f:facet>
+                        <h:commandLink value="Update" action="#{studentController.loadStudent(s.id)}"></h:commandLink>
+                        |
+                        <h:commandLink value="Delete"
+                                       action="#{studentController.deleteStudent(s.id)}">
+                        </h:commandLink>
+
+                    </h:column>
+
+
+                </h:dataTable>
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+
+</html>
